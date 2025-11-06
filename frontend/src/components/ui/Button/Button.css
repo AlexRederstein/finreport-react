@@ -1,0 +1,14 @@
+.button-control {
+  border: 1px solid var(--main--main-bg-color);
+  color: var(--main--main-bg-color);
+  background-color: inherit;
+  border-radius: 5px;
+  padding: 15px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.button-control:hover {
+  background-color: var(--main--main-bg-color);
+  color: white;
+}

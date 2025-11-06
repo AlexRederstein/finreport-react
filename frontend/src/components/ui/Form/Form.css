@@ -1,0 +1,13 @@
+.form-control {
+  display: table;
+  border-spacing: 10px;
+  margin: auto;
+}
+
+.form-row {
+  display: table-row;
+}
+
+.form-row > div {
+  display: table-cell;
+}
