@@ -1,10 +1,13 @@
 const { DataTypes } = require("sequelize");
-const { User } = require("../database");
-// const user = require("./user");
+// const { User } = require("../database");
+// const User = require("./user");
 
 module.exports = function (sequelize) {
   return sequelize.define("Token", {
-    user: { type: DataTypes.UUID, references: { model: User, key: "userid" } },
-    refreshToken: { type: DataTypes.STRING, allowNull: false },
+    user: {
+      type: DataTypes.UUID,
+      references: { model: "Users", key: "userid" },
+    },
+    refreshToken: { type: DataTypes.TEXT, allowNull: false },
   });
 };

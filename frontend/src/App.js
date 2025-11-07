@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <div className="content">
-        <Sidebar />
+        {/* <Sidebar /> */}
         <main>
           <WebRoutes />
         </main>

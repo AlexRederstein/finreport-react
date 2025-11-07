@@ -1,13 +1,20 @@
-.form-control {
+.rows-container {
   display: table;
-  border-spacing: 10px;
-  margin: auto;
+  /* width: %; */
+  border-spacing: 5px;
+  width: 100%;
 }
 
-.form-row {
+.row {
   display: table-row;
 }
 
-.form-row > div {
+.row > div {
   display: table-cell;
+  /* padding: 5px; */
+}
+
+.row > div:first-child {
+  /* display: table-cell; */
+  text-align: right;
 }

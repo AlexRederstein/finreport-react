@@ -12,8 +12,14 @@ const connect = new Sequelize({
 const User = require("./model/user")(connect);
 const Token = require("./model/token")(connect);
 
+const syncDB = async () => {
+  await connect.sync();
+};
+
+syncDB();
+
 module.exports = {
-  connect: connect,
+  // connect: connect,
   User: User,
   Token: Token,
 };

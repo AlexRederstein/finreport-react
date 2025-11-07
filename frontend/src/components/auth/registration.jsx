@@ -1,7 +1,9 @@
 import Input from "../ui/Input/Input";
-import Form from "../ui/Form/Form";
-import FormRow from "../ui/Form/FormRow";
+import RowsContainer from "../ui/Form/RowsContainer";
+import Row from "../ui/Form/Row";
 import Button from "../ui/Button/Button";
+import ContentContainer from "../ui/Form/ContentContainer";
+import AuthFormContainer from "../ui/Form/AuthFormContainer";
 
 export default () => {
   const submit = async (event) => {
@@ -28,31 +30,37 @@ export default () => {
   };
 
   return (
-    <Form onSubmit={submit}>
-      <h3>Регистрация</h3>
-      <FormRow label="Имя">
-        <Input type="text" name="name" defaultValue="Кирилл " />
-      </FormRow>
-      <FormRow label="Фамилия">
-        <Input type="text" name="lastname" defaultValue="Синицын" />
-      </FormRow>
-      <FormRow label="Отчество">
-        <Input type="text" name="surname" defaultValue="Сергеевич" />
-      </FormRow>
-      <FormRow label="Почта">
-        <Input
-          type="email"
-          name="email"
-          defaultValue="kirya.sinichin@mail.ru"
-        />
-      </FormRow>
-      <FormRow label="Пароль">
-        <Input type="text" name="password" defaultValue="12345" />
-      </FormRow>
-      <FormRow label="Повторите пароль">
-        <Input type="text" defaultValue="12345" />
-      </FormRow>
-      <Button type="submit">Отправить</Button>
-    </Form>
+    <AuthFormContainer>
+      <ContentContainer style={{ textAlign: "center", minWidth: "50%" }}>
+        <form action="" onSubmit={submit}>
+          <h3>Регистрация</h3>
+          <RowsContainer>
+            <Row label="Имя">
+              <Input type="text" name="name" defaultValue="Кирилл " />
+            </Row>
+            <Row label="Фамилия">
+              <Input type="text" name="lastname" defaultValue="Синицын" />
+            </Row>
+            <Row label="Отчество">
+              <Input type="text" name="surname" defaultValue="Сергеевич" />
+            </Row>
+            <Row label="Почта">
+              <Input
+                type="email"
+                name="email"
+                defaultValue="kirya.sinichin@mail.ru"
+              />
+            </Row>
+            <Row label="Пароль">
+              <Input type="text" name="password" defaultValue="12345" />
+            </Row>
+            <Row label="Повторите пароль">
+              <Input type="text" defaultValue="12345" />
+            </Row>
+          </RowsContainer>
+          <Button type="submit">Отправить</Button>
+        </form>
+      </ContentContainer>
+    </AuthFormContainer>
   );
 };

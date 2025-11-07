@@ -1,21 +1,22 @@
-const User = require("../database").User;
-const bcrypt = require("bcrypt");
+const service = require("../service/user-service");
 
 class userController {
   async registration(req, res, next) {
     try {
-      const protectedPass = await bcrypt.hash(req.body.password, 10);
       const data = {
         name: req.body.name,
         lastname: req.body.lastname,
         surname: req.body.surname,
         email: req.body.email,
-        password: protectedPass,
+        password: req.body.password,
       };
-      const newUser = await User.create(data);
-      res.json({ message: `Новая запись создана ${newUser}` });
 
-      // Service.registration(data);
+      var userData = await service.registration(data);
+      res.cookie("refreshToken", userData.refreshToken, {
+        maxAge: 30 * 26 * 60 * 60 * 1000,
+        httpOnly: true,
+      });
+      return res.json(userData);
     } catch (err) {
       console.log(err);
     }

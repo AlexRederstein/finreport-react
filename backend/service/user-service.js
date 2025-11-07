@@ -13,10 +13,10 @@ class userService {
       },
     });
     if (candidate) {
-      throw new Error(`Такой пользователь уже есть email ${email}`);
+      throw new Error(`Такой пользователь уже есть email ${data.email}`);
     }
 
-    const protecredPass = await bcrypt.hash(data.password, 1488);
+    const protecredPass = await bcrypt.hash(data.password, 3);
     const activationLink = uuid.v4();
 
     const user = await User.create({
@@ -27,12 +27,20 @@ class userService {
       password: protecredPass,
       activationLink: activationLink,
     });
-    await mailService.sendActivationMail(data.mail, activationLink);
+    await mailService.sendActivationMail(
+      data.email,
+      `${process.env.API_URL}/api/activate/${activationLink}`
+    );
 
     const userDto = new UserDto(user);
     const tokens = tokenService.generateToken({ ...userDto });
     await tokenService.saveToken(userDto.userid, tokens.refreshToken);
-    return user;
+    // return user;
+
+    return {
+      ...tokens,
+      user: userDto,
+    };
   }
 }
 
