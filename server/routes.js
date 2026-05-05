@@ -1,14 +1,19 @@
 const Router = require("express").Router;
+const authMiddleware = require("./middleware/api-middleware")
 
 const router = new Router();
 
 const documentController = require("./controllers/DocumentController");
-const userController = require("./controllers/UserController");
+const UserController = require("./controllers/UserController");
 
-router.get("/user", userController.getUser);
 
-router.get("/get_statements", documentController.getList);
 
-router.post("/login", userController.login);
+router.post("/login", UserController.login);
+router.post("/registration", UserController.registration);
+
+router.post("/get_statements", authMiddleware, documentController.getList);
+router.get("/user", UserController.getUser);
+router.post("/logout", UserController.logout);
+router.post("/refresh", UserController.refresh);
 
 module.exports = router;

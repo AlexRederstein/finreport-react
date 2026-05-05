@@ -7,7 +7,9 @@ const app = express();
 const port = process.env.SERVER_PORT || 3000;
 
 const routes = require("./routes");
+const cookieParser = require("cookie-parser");
 
+app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(
   cors({
@@ -17,6 +19,15 @@ app.use(
 );
 
 app.use("", routes);
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept",
+  )
+  next();
+})
 
 app.listen(port, () => {
   console.log(`Сервер запущен на http://localhost:${port}`);

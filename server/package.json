@@ -20,10 +20,17 @@
   },
   "homepage": "https://github.com/AlexRederstein/finreport-react#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "body-parser": "^2.2.2",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mobx": "^6.15.0"
+    "express-validator": "^7.3.2",
+    "jsonwebtoken": "^9.0.3",
+    "mobx": "^6.15.0",
+    "nodemon": "^3.1.14",
+    "pg": "^8.20.0",
+    "sequelize": "^6.37.8"
   }
 }
