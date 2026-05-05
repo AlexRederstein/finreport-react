@@ -1,0 +1,60 @@
+@use "./styles/forms.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  min-height: 100vh;
+  grid-template-columns: 400px 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+header {
+  color: white;
+  background-color: vars.$primary-color;
+  grid-area: header;
+  padding: 15px;
+}
+
+nav.sidebar {
+  border-top: 1px solid white;
+  background-color: vars.$primary-color;
+  grid-area: sidebar;
+  padding: 15px;
+
+  ul {
+    padding: 0;
+    li {
+      list-style: none;
+      a {
+        display: block;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.55);
+        padding: 5px;
+        border-radius: 5px;
+        &:hover {
+          color: white;
+          background-color: rgb(199, 188, 187, 0.3);
+        }
+      }
+    }
+  }
+}
+
+main {
+  grid-area: main;
+  padding: 15px;
+}
+
+footer {
+  background-color: vars.$primary-color;
+  grid-area: footer;
+  padding: 15px;
+}
