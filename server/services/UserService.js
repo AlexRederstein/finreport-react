@@ -6,7 +6,6 @@ const TokenService = require("./TokenService");
 
 class UserService {
   async login(data) {
-    console.log(data)
     const userData = await User.findOne({where: {email: data.email}})
     if(!userData) {
       throw ApiError.badRequest("Пользователь не был найден")

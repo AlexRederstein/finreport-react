@@ -10,7 +10,7 @@ const Header = observer(() => {
       <Link to="/profile">Личный кабинет</Link>
       {store.isAuth ? (
         <div>
-          <span>{store.user.name}</span> <button>Выход</button>
+          <span>{store.user.name}</span> <button onClick={() => store.logout()}>Выход</button>
         </div>
       ) : (
         ""

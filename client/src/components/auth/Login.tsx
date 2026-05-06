@@ -1,26 +1,36 @@
 import { useContext, useState } from "react";
 import { Context } from "../../context/UserContext";
+import InputContainer from "../ui/InputContainer";
+import {ControlInput} from "../ui/Input";
+import { Link } from "react-router-dom";
+import "./auth.scss"
 
 const Login = () => {
-  const [login, setLogin] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const store = useContext(Context);
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Login"
-        value={login}
-        onChange={(e) => setLogin(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={() => store.login(login, password)}>login</button>
+    <div className="auth-font">
+      <div className="auth-form content-container">
+        <span>Вход в личный кабинет</span>
+        <InputContainer>
+          <ControlInput
+            type="text"
+            label="Почта"
+            value={email}
+            onChange={setEmail}
+          />
+          <ControlInput
+            type="text"
+            label="Пароль"
+            value={password}
+            onChange={setPassword}
+          />
+        </InputContainer>
+        <button onClick={() => store.login(email, password)}>Войти</button>
+        <Link to="/registration">Регистрация</Link>
+      </div>
     </div>
   );
 };

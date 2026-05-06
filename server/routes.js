@@ -11,9 +11,9 @@ const UserController = require("./controllers/UserController");
 router.post("/login", UserController.login);
 router.post("/registration", UserController.registration);
 
-router.post("/get_statements", authMiddleware, documentController.getList);
+router.get("/get_statements", authMiddleware, documentController.getList);
 router.get("/user", UserController.getUser);
 router.post("/logout", UserController.logout);
-router.post("/refresh", UserController.refresh);
+router.get("/refresh", UserController.refresh);
 
 module.exports = router;

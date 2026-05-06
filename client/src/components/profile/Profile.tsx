@@ -3,7 +3,7 @@ import { IUser } from "../../models/IUser";
 
 const Profile = () => {
   return (
-    <div>
+    <div className="content-container">
       <h1>Данные сотрудника</h1>
       <strong></strong>
       {/* <ProfileRow label="ФИО" text={user.name} /> */}
