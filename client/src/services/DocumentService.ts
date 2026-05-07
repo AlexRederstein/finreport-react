@@ -1,9 +1,9 @@
 import { AxiosResponse } from "axios";
-import {DocumentListResponce} from "../models/DocumentListResponce"
+import { DocumentListResponce, DocumentInstance } from "../models/Document"
 import $api from "../http";
 
 export default class DocumentService  {
-    static fetchDocumentList(): Promise<AxiosResponse<DocumentListResponce>> {
+    static async fetchDocumentList(): Promise<AxiosResponse<DocumentListResponce>> {
         return $api.get<DocumentListResponce>("/get_statements");
     }
 }

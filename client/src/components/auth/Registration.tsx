@@ -11,14 +11,16 @@ const Registration = () => {
     const store = useContext(Context)
     
     return (
-        <div>
-            <InputContainer>
-                <ControlInput type="text" label="Почта" value={email} onChange={setEmail} />
-                <ControlInput type="text" label="Имя" value={name} onChange={setName} />
-                <ControlInput type="date" label="Дата рождения" value={birthDate} onChange={setBirthDate} />
-                <ControlInput type="text" label="Пароль" value={password} onChange={setPassword} />
-            </InputContainer>
-            <button onClick={() => store.registration(email, name, birthDate, password)}>Регистрация</button>
+        <div className="auth-font">
+            <div className="auth-form content-container">
+                <InputContainer>
+                    <ControlInput type="text" label="Почта" value={email} onChange={setEmail} />
+                    <ControlInput type="text" label="Имя" value={name} onChange={setName} />
+                    <ControlInput type="date" label="Дата рождения" value={birthDate} onChange={setBirthDate} />
+                    <ControlInput type="text" label="Пароль" value={password} onChange={setPassword} />
+                </InputContainer>
+                <button onClick={() => store.registration(email, name, birthDate, password)}>Регистрация</button>
+            </div>
         </div>
     )
 }

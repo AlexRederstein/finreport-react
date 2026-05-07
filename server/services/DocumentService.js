@@ -52,7 +52,7 @@ class DocumentService {
         status: 0,
       },
     ];
-    return data;
+    return {list: data};
   }
 }
 

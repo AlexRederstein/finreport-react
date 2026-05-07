@@ -1,49 +1,57 @@
 import { useParams } from "react-router-dom";
-import { statements } from "../../documents/statements";
-import StatementInfo from "../../interfaces/document";
-import { useEffect, useState } from "react";
-import DocumentService from "../../services/DocumentService";
-
-const statuses = ["Черновик", "Отправлен", "В обработке", "Принят", "Отклонён"];
-interface DocumentList {
-  message: string
-}
+import { documentRegistryService } from "../../services/DocumentRegistryService";
+import { useFetchList } from "../../hooks/useDocumentList";
+import { DocumentInstance, DocumentStatus, DocumentStatusText, DocumentStatusColor } from "../../models/Document";
+import { Link } from "react-router-dom";
+import "./document.scss"
 
 
 const List = () => {
-  const [list, setlist] = useState<DocumentList>({} as DocumentList)
 
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams<{ id: string }>()
 
-  const statement = statements.find((s) => s.id == id);
-
-  if (!statement) {
-    console.log("Документа нет");
-    return;
+  if(!id) {
+    return <div>Не указан тип документа</div>
   }
 
-  const getDocumentList = async () => {
-    try {
-      const responce = await DocumentService.fetchDocumentList();
-      setlist(responce.data)
-    } catch (e) {
-      console.log(e)
-    }
+  const document = documentRegistryService.get(id)
+  
+  if(!document) {
+    return <div>Документ не найден</div>
+  }
 
-  } 
+  const {data} = useFetchList()
 
-  useEffect(() => {
-    getDocumentList()
-  }, [])
+  if(data) {
+    console.log(data)
+  }
 
   return (
     <>
-      <h1>{statement.nameLabel}</h1>
-      <div className="content-container">
-        {list.message}
+      <h2>{document.name}</h2>
+      <div className="content-container ">
+        <div><Link to={`/documents/create/${document.id}`}>+ {document.name}</Link></div>
+        <div className="document-rows-container">
+          {data && data.map(item => <DocumentRow key={item.guid_doc} item={item} />)}
+        </div>
       </div>
     </>
   );
 };
+
+interface DocumentRowProps {
+  item: DocumentInstance
+}
+
+const DocumentRow = ({item}: DocumentRowProps) => {
+  return (
+    <div className="document-row">
+      <div className="document-open"><button>Заявление от {item.creationDate}</button></div>
+      <div className="document-option-1">{item.status == DocumentStatus.DRAFT && <button className="red">Удалить</button>}</div>
+      <div className="document-option-2"></div>
+      <div className={`document-status ${DocumentStatusColor[item.status]}`}>{DocumentStatusText[item.status]}</div>
+    </div>
+  )
+}
 
 export default List;

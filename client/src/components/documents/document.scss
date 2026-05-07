@@ -1,0 +1,23 @@
+div.document-rows-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+
+    & > div.document-row {
+        display: contents;
+
+    //     .document-open{
+    //         // grid-area: open;
+    //     }
+        .document-option-1{
+            text-align: center;
+            // grid-area: option;
+        }
+        .document-option-2{
+            text-align: center;
+            // grid-area: option2;
+        }
+        .document-status{
+            text-align: end;
+        }
+    }
+}

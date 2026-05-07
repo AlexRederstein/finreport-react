@@ -10,7 +10,10 @@ import { AuthorizedRoutes, UnauthorizedRoutes } from "./middleware/AuthRoutes";
 import { observer } from "mobx-react";
 import { useContext } from "react";
 import { Context } from "./context/UserContext";
+import Form from "./components/documents/Form"
 import Registration from "./components/auth/Registration";
+
+import "./documents/index"
 
 const App: React.FC = () => {
   const store = useContext(Context);
@@ -40,6 +43,7 @@ const App: React.FC = () => {
               <Route element={<AuthorizedRoutes />}>
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/documents/:id" element={<List />} />
+                <Route path="/documents/create/:id" element={<Form />}></Route>
               </Route>
             </Routes>
           </Main>
