@@ -1,0 +1,57 @@
+// .form-inputs-container {
+// }
+
+.form-inputs-container-borders {
+  display: block;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 15px 0;
+}
+
+.form-row {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 5px;
+  align-items: center;
+
+  > div:first-child {
+    width: 40%;
+    text-align: end;
+  }
+  input,
+  select,
+  textarea {
+    flex: 1;
+    border: 1px solid black;
+    padding: 2px 5px;
+    margin: 2px 1px 1px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    min-height: 1.9rem;
+  }
+}
+
+.panel-buttons {
+  display: flex;
+  gap: 5px;
+  overflow-y: auto;
+  border-bottom: 1px solid #ced4da;
+  white-space: nowrap;
+
+  > button {
+    font-weight: 700;
+    border: 1px solid #ced4da;
+    background-color: #ced4da;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom: 0;
+    padding: 5px 15px;
+  }
+}
+
+.form-submit-panel {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+}
